@@ -112,9 +112,12 @@
     		<div class="row">
 			<!-- Div Our Products -->
 			@foreach($product as $new)
+			@php
+				$img=$new->image;
+			@endphp
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="assets/images/{{$new->image}}" alt="Colorlib Template"></a>
+    					<a href="#" class="img-prod"><img class="img-fluid" src="{{voyager::image($img)}}" alt="Colorlib Template"></a>
     					<div class="text py-3 px-3">
     						<h3><a href="#">{{$new->name}}</a></h3>
     						<div class="d-flex">
