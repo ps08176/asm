@@ -13,7 +13,7 @@
             </div>
           </div>
           <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-5">dgfdgdfgdfgdf
+            <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Menu</h2>
               <ul class="list-unstyled">
                 <li><a href="#" class="py-2 d-block">Shop</a></li>
