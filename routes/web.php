@@ -45,12 +45,29 @@ Route::get('about',[
     'as'=>'about',
     'uses'=>'PageController@getAbout',
 ]);
-Route::get('contact',[
-    'as'=>'contact',
-    'uses'=>'PageController@getContact',
-]);
+
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('dang-nhap',[
+    'as'=>'login',
+    'uses'=>'PageController@getLogin',
+]);
+Route::post('dang-nhap',[
+    'as'=>'login',
+    'uses'=>'PageController@postLogin',
+]);
+Route::get('dang-ki',[
+    'as'=>'register',
+    'uses'=>'PageController@getRegister',
+]);
+Route::post('dang-ki',[
+    'as'=>'register',
+    'uses'=>'PageController@postRegister',
+]);

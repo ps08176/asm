@@ -50,7 +50,8 @@
             </li>
 	          <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About</a></li>
 	          <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
-	          <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Log in</a></li>
+            <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Register</a></li>
 	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
 	        </ul>
