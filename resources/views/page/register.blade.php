@@ -12,7 +12,7 @@
     </div>
 
     <section class="ftco-section contact-section bg-light">
-    <div class="container" style="text-align: center;" >
+    <div class="container"  >
       
       <form action="{{route('register')}}"method="post" class="beta-form-checkout">
       <input type="hidden" name="_token" value="{{csrf_token()}}">  
@@ -25,31 +25,32 @@
               @endforeach
             </div>
           @endif  
-          @if(Session::has('ok'))
-            <div class="alert alert success">{{Session::get('ok')}}</div>
+          @if(Session::has('thanhcong'))
+            <div class="alert alert success">{{Session::get('thanhcong')}}</div>
           @endif
-              <div class="col-sm-6">    
+            <div class="col-sm-6" style="text-align: center; justify-content: center;">    
               <h4>Đăng kí</h4><br>
-              <div class="form-block">
+              <div class="form-block"  >
                 <label for="email" >Email</label>
-                <input type="email" name="email" required>
+                <input type="email" name="email" required style="width=100%; margin: 5px;">
               </div>
               <div class="form-block">
                 <label for="phone">Password</label>
-                <input type="text" name="password" required >
+                <input type="text" name="password" required style="width=100%; margin: 5px;">
               </div>
               <div class="form-block">
                 <label for="phone">Re Password</label>
-                <input type="text" name="re_password" required>
+                <input type="text" name="re_password" required style="width=100%; margin: 5px;">
               </div>
               <div class="form-block">
                 <label for="email" >Full Name</label>
-                <input type="text" name="fullname" required>
+                <input type="text" name="fullname" required style="width=100%; margin: 5px;">
               </div>
             
               <div class="form-block">
                 <input type="submit" class="btn btn-primary"></button>
               </div>
+            </div>  
               <div class="col-sm-3"></div>
         </div>
       </form>

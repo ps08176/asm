@@ -52,7 +52,14 @@
 	          <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
 	          <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Log in</a></li>
             <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Register</a></li>
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+            <li class="nav-item cta cta-colored">
+              <a href="{{route('getcart')}}" class="nav-link"><span class="icon-shopping_cart"></span>
+              (@if(Session::has('cart'))
+                  {{Session('cart')->totalQty}}
+                @else [0] 
+              @endif)</a>
+                
+            </li>
 
 	        </ul>
 	      </div>

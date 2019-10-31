@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\ProductType;
+use App\Cart;
+use Session;
 use Illuminate\Http\Request;
 use App\User;
 use Hash;
-
+use Auth;
 class PageController extends Controller
 {
     public function getIndex(){
@@ -59,7 +61,7 @@ class PageController extends Controller
         $user->password=Hash::make($req->password);
         $user->name=$req->fullname;
         $user->save();
-        return redirect()->back()->with('Ok','Da tao tk');
+        return redirect()->back()->with('thanhcong','Da tao tk');
          
     }
     public function postLogin(Request $req){
@@ -75,6 +77,29 @@ class PageController extends Controller
 
         ]);
         
-        $credentials = array('email'=> $req->email,'password'=> $req->password,)
+        $credentials = array('email'=>$req->email,'password'=>$req->password,);
+        if(Auth::attemp($credentials)){
+            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);        
+        }
+        else{
+        return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập thất bại ']);
+        }
+    }
+    public function getAddtoCart(Request $req,$id){
+        $product = Product::find($id);
+        $oldCart = Session('cart') ? Session::get('cart'):null;
+        $cart=new Cart($oldCart);
+        $cart->add($product, $product->$id);
+        
+        $req->Session()->put('cart',$cart);
+        return redirect()->back();
+    }
+    public function getCart(){
+        if (!Session::has('cart')){
+            return view('page.cart',['product_cart'=>null]);
+        }
+        $oldCart= Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('page.cart',['product_cart'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQty'=>$cart->totalQty]);
     }
 }

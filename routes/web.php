@@ -71,3 +71,11 @@ Route::post('dang-ki',[
     'as'=>'register',
     'uses'=>'PageController@postRegister',
 ]);
+Route::get('add-to-cart/{id}',[
+    'as'=>'addtocart',
+    'uses'=>'PageController@getAddtoCart',
+]);
+Route::get('get-cart',[
+    'as'=>'getcart',
+    'uses'=>'PageController@getCart',
+]);
