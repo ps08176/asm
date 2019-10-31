@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-<div class="hero-wrap hero-bread" style="background-image: url('images/bg_6.jpg');">
+<div class="hero-wrap hero-bread" style="background-image: url('assets/images/bg_6.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
@@ -10,16 +10,15 @@
         </div>
       </div>
     </div>
-		
+
 		<section class="ftco-section ftco-cart">
+		
 			<div class="container">
 				<div class="row">
     			<div class="col-md-12 ftco-animate">
-    				<div class="cart-list">
 	    				<table class="table">
 						    <thead class="thead-primary">
-							 
-							<tr class="text-center">
+						      <tr class="text-center">
 						        <th>&nbsp;</th>
 						        <th>&nbsp;</th>
 						        <th>Product</th>
@@ -28,41 +27,46 @@
 						        <th>Total</th>
 						      </tr>
 						    </thead>
-						    <tbody>
-								
+
+						
+							<tbody>	
 							@if(Session::has('cart'))
-								@foreach($product_cart as $product)
-									<tr class="text-center">
-										<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-										
-										<!-- <td class="image-prod"><div class="img" style="background-image:url(assets/{{$product=>['item']['image]}});"></div></td> -->
-										
-										<td class="product-name">
-											<h3>fffffff</h3>
-											<p>Far far away, behind the word mountains, far from the countries</p>
-										</td>
-										
-										<!-- <td class="price">{{$product['item']['price']}}</td> -->
-										
-										<td class="quantity">
-											<div class="input-group mb-3">
-											<!-- <input type="text" name="quantity" class="quantity form-control input-number" value="{{ $product['item']['title']}}" min="1" max="100"> -->
-											<!-- {{$product['item']['qty']}} --> -->
-										</div>
-									</td>
-						        
-						        <!-- <td class="total">{{$product['item']['totalprice']}}</td> -->
+							@foreach($product_cart as $product)
+								<tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+
+						        <td class="image-prod"><div class="img" style="background-image:url({{Voyager::image($product['item']['image'])}})"></div></td>
+
+						        <td class="product-name">
+						        	<h3>{{$product['item']['name']}}</h3>
+						        	<p></p>
+						        </td>
+
+						        <td class="price">${{$product['item']['price']}}</td>
+
+						        <td class="quantity">
+						        	<div class="input-group mb-3">
+					             	<input type="text" name="quantity" class="quantity form-control input-number" value="{{$product['qty']}}" min="1" max="100">
+					          	</div>
+					          </td>
+
+						        <td class="total">${{$product['item']['gia_sp']}}</td>
 							  </tr>
-							  @endforeach
-								 @else
-								 Khong co sp
-							@endif 
+
 							  <!-- END TR-->
-						    </tbody>
+							@endforeach
+							@else
+							 	<h3>Không có sp<h3>
+							@endif
+							</tbody>		
 						  </table>
-					  </div>
     			</div>
-    		</div>
+				</div>
+			<p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+			
+		</div>
+		
+		</section>
     		<!-- <div class="row justify-content-end">
     			<div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
@@ -84,19 +88,13 @@
     						<span>Total</span>
     						<span>$17.60</span>
     					</p>
-    				</div>
-    				<p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
-    				</div>
-    			</div>
-			</div> -->
-		</section>
+    				</div> -->
 
-    
-    		
-			<!-- Het box sp -->
-			</div>
-    	</div>
-    
+    			<!-- </div> -->
+			<!-- </div> -->
+			<!-- Het sp -->
+
+
 
 		<section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
@@ -119,7 +117,7 @@
           </div>
         </div>
       </div>
-    </section>
+    	</section>
 
 
 @endsection()
@@ -128,19 +126,19 @@
 
 		var quantitiy=0;
 		   $('.quantity-right-plus').click(function(e){
-		        
+
 		        // Stop acting like a button
 		        e.preventDefault();
 		        // Get the field name
 		        var quantity = parseInt($('#quantity').val());
-		        
+
 		        // If is not undefined
-		            
+
 		            $('#quantity').val(quantity + 1);
 
-		          
+
 		            // Increment
-		        
+
 		    });
 
 		     $('.quantity-left-minus').click(function(e){
@@ -148,14 +146,14 @@
 		        e.preventDefault();
 		        // Get the field name
 		        var quantity = parseInt($('#quantity').val());
-		        
+
 		        // If is not undefined
-		      
+
 		            // Increment
 		            if(quantity>0){
 		            $('#quantity').val(quantity - 1);
 		            }
 		    });
-		    
+
 		});
 	</script>
